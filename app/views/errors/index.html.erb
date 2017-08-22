@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Errors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Time</th>
+      <th>Exps</th>
+      <th>Machine</th>
+      <th>Line</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @errors.each do |error| %>
+      <tr>
+        <td><%= error.min %></td>
+        <td><%= error.max %></td>
+        <td><%= error.time %></td>
+        <td><%= error.exps %></td>
+        <td><%= error.machine.name %></td>
+        <td><%= error.line %></td>
+        <td><%= link_to 'Show', error %></td>
+        <td><%= link_to 'Edit', edit_error_path(error) %></td>
+        <td><%= link_to 'Destroy', error, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Error', new_error_path %>
+<br>
+
+<%= form_tag import_errors_path, multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "upload" %>
+<% end %>

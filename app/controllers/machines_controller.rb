@@ -4,7 +4,7 @@ class MachinesController < ApplicationController
   # GET /machines
   # GET /machines.json
   def import
- count = Machine.import params[:file]
+ count = Machine.import(params[:file])
  redirect_to machines_path, notice: "file imported successfully!"
   end     
   def index

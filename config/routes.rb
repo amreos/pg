@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :machines do
+resources :errors do
+    collection do
+      post :import
+    end
+  end
+    resources :machines do
     collection do
       post :import
     end
